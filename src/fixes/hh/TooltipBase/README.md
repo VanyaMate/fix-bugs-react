@@ -273,3 +273,39 @@ export const TooltipBase = ({
 };
 
 ```
+
+
+```typescript jsx
+
+// isTextClamped - тут в этой функции была проблема, там считался размер блока внутри
+// К сожалений найти я её не могу больше 
+
+export default function useIsTextClamped (elementRef: MutableRefObject<HTMLElement | null>): boolean {
+    const [ isClamped, setIsClamped ] = useState(false);
+    const { breakpoint }              = useBreakpoint();
+    useEffect(() => {
+        if (elementRef.current) {
+            setIsClamped(isTextClamped(elementRef.current));
+        }
+    }, [ breakpoint, elementRef ]);
+    return isClamped;
+}
+
+```
+
+```typescript jsx
+// Компонент BottomSheetRenderFunc
+
+
+useEffect(() => {
+    const animationTimeoutElement = document.createElement('div');
+    animationTimeoutElement.classList.add(styles.animationTimeout);
+    document.body.appendChild(animationTimeoutElement);
+    const style  = window.getComputedStyle(animationTimeoutElement);
+    const enter  = toNumber(style.getPropertyValue(CSS_VAR_ENTER_ANIMATION_DURATION));
+    const exit   = toNumber(style.getPropertyValue(CSS_VAR_EXIT_ANIMATION_DURATION));
+    const height = toNumber(style.getPropertyValue(CSS_VAR_HEIGHT_ANIMATION_DURATION));
+    document.body.removeChild(animationTimeoutElement);
+    setAnimationTimeout({ appear: { enter, exit }, height: { enter: height, exit } });
+}, [ setAnimationTimeout ]);
+```
