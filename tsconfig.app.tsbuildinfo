@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/fixes/hh/tooltipbase/hhtooltipbasewithfix.tsx","./src/fixes/hh/tooltipbase/hhtooltipbasewithoutfix.tsx","./src/fixes/hh/tooltipbase/scheduler.ts"],"version":"5.6.2"}
