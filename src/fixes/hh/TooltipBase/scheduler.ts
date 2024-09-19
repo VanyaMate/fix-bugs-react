@@ -33,6 +33,8 @@ class Scheduler {
                 while (cb = this._mutates.pop()) cb();
                 while (cb = this._calculates.pop()) cb();
                 while (cb = this._afterAll.pop()) cb();
+                this._scheduled = false;
+                // но без try catch тут не выжить
             });
         }
     }
